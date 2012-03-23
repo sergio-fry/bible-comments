@@ -1,4 +1,4 @@
-# encoding: utf8
+# encoding: utf-8
 require 'spec_helper'
 
 describe Comment do
