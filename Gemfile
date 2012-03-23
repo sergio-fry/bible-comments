@@ -35,6 +35,7 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem 'inherited_resources'
+gem 'cancan'
 
 group :development do
   gem 'rspec-rails'

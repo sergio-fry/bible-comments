@@ -1,9 +1,9 @@
-<h1>Listing comments</h1>
+<h1>Комментарии к Библии</h1>
 
 <table>
   <tr>
-    <th>Title</th>
-    <th>Comment</th>
+    <th>Заголовок</th>
+    <th>Ссылка на Библию</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +12,7 @@
 <% @comments.each do |comment| %>
   <tr>
     <td><%= comment.title %></td>
-    <td><%= comment.comment %></td>
+    <td><%= comment.bible_links %></td>
     <td><%= link_to 'Show', comment %></td>
     <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
     <td><%= link_to 'Destroy', comment, confirm: 'Are you sure?', method: :delete %></td>
