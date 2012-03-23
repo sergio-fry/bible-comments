@@ -4,22 +4,16 @@
   <tr>
     <th>Заголовок</th>
     <th>Ссылка на Библию</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @comments.each do |comment| %>
   <tr>
-    <td><%= comment.title %></td>
+    <td><%= link_to comment.title, comment %></td>
     <td><%= comment.bible_links %></td>
-    <td><%= link_to 'Show', comment %></td>
-    <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-    <td><%= link_to 'Destroy', comment, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Comment', new_comment_path %>
+<%= link_to('New Comment', new_comment_path) if can? :create, Comment %>
