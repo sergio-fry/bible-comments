@@ -13,7 +13,7 @@ $ ->
       for quote in data
         html += "<p><ol start=\"#{quote.verses[0].number}\">"
         for verse in quote.verses
-          html += "<li>#{verse.text}</li>"
+          html += "<li><quote>#{verse.text}</quote></li>"
 
         html += "</ol><strong>#{quote.quote_link}</strong></p>"
 
