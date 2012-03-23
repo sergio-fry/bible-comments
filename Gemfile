@@ -36,6 +36,7 @@ gem 'jquery-rails'
 
 gem 'inherited_resources'
 gem 'cancan'
+gem 'RedCloth'
 
 group :development do
   gem 'rspec-rails'

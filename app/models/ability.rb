@@ -5,6 +5,9 @@ class Ability
     if user.present?
       can :create, Comment
       can :manage, Comment, :user_id => user.id
+    elsif Rails.env.to_sym == :development
+      can :create, Comment
+      can :manage, Comment
     end
 
     can :read, :all

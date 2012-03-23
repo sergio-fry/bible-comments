@@ -8,7 +8,7 @@
     <th>Цитата из Библии</th>
   </tr>
   <tr>
-    <td valign="top"><%= @comment.comment %></td>
+    <td valign="top"><%=raw RedCloth.new(@comment.comment, [:filter_html]).to_html %></td>
     <td valign="top">
       <%= content_tag :span, :class => :bible_quote, "data-bible_links" => @comment.bible_links do %>
         Loading...
