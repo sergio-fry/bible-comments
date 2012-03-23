@@ -1,21 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @comment.title %>
-</p>
+<h1><%=  @comment.title %></h1>
 
-<p>
-  <%= content_tag :span, :class => :bible_quote, "data-bible_links" => @comment.bible_links do %>
-    Loading...
-  <% end %>
-</p>
-
-<p>
-  <b>Comment:</b>
-  <%= @comment.comment %>
-</p>
-
+<table width="100%">
+  <tr>
+    <th width="50%">Комметарий</th>
+    <th>Цитата из Библии</th>
+  </tr>
+  <tr>
+    <td valign="top"><%= @comment.comment %></td>
+    <td valign="top">
+      <%= content_tag :span, :class => :bible_quote, "data-bible_links" => @comment.bible_links do %>
+        Loading...
+      <% end %>
+    </td>
+  </tr>
+</table>
 
 <%= link_to 'Edit', edit_comment_path(@comment) %> |
 <%= link_to 'Back', comments_path %>
