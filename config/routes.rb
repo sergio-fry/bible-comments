@@ -1,4 +1,6 @@
 BibleComments::Application.routes.draw do
+  post 'sign_in', :to => 'sessions#create', :as => :sign_in
+
   root :to => "comments#index"
   resources :comments
 
