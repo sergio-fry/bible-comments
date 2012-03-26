@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
     data_json = JSON.parse(data)
 
-    @user = User.find_or_create_by_identity_and_provider(data["identity"], data["provider"])
+    @user = User.find_or_create_by_identity_and_provider(data_json["identity"], data_json["provider"])
     @user.open_id_data = data_json
     @user.save
 
