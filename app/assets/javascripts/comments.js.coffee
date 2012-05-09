@@ -3,10 +3,10 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $(".bible_quote").each ->
-    $.bible_api.get_quotes $(this).data("bible_links"), (data) =>
+  load_quotes_to = (target, quote_link) ->
+    $.bible_api.get_quotes quote_link, (data) =>
       # clear text
-      $(this).html ""
+      target.html ""
 
       html = ""
 
@@ -17,5 +17,16 @@ $ ->
 
         html += "</ol><strong>#{quote.quote_link}</strong></p>"
 
-      $(this).append html
+      target.append html
+
+  # Display on show page
+  $(".bible_quote").each ->
+    load_quotes_to($($(this).data("target")), $(this).data("bible_links"))
+
+  # Edit form
+  $(".bible_links_field").bind "change", ->
+    load_quotes_to($($(this).data("target")), $(this).val())
+
+  $(".bible_links_field").each ->
+    load_quotes_to($($(this).data("target")), $(this).val())
 

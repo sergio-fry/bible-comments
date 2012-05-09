@@ -10,7 +10,7 @@
   <tr>
     <td valign="top"><%=raw RedCloth.new(@comment.comment, [:filter_html]).to_html %></td>
     <td valign="top">
-      <%= content_tag :span, :class => :bible_quote, "data-bible_links" => @comment.bible_links do %>
+      <%= content_tag :span, :id => "bible_quotes", :class => :bible_quote, "data-bible_links" => @comment.bible_links, "data-target" => "#bible_quotes" do %>
         Loading...
       <% end %>
     </td>
