@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120323135246) do
+ActiveRecord::Schema.define(:version => 20120505154408) do
 
   create_table "comments", :force => true do |t|
     t.string   "title"
     t.text     "comment"
     t.string   "bible_links"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "user_id"
+    t.boolean  "draft",       :default => false
   end
 
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"

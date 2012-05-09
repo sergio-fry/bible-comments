@@ -19,12 +19,16 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe CommentsController do
+  before do
+    @current_user = User.create
+    CommentsController.any_instance.stub(:current_user) { @current_user }
+  end
 
   # This should return the minimal set of attributes required to create a valid
   # Comment. As you add validations to Comment, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    { :user_id => @current_user.id }
   end
   
   # This should return the minimal set of values that should be in the session
@@ -37,6 +41,20 @@ describe CommentsController do
   describe "GET index" do
     it "assigns all comments as @comments" do
       comment = Comment.create! valid_attributes
+      get :index, {}, valid_session
+      assigns(:comments).should eq([comment])
+    end
+
+    it "should not assign draft comments od another user" do
+      @another_user = User.create
+
+      comment = Comment.create! valid_attributes.merge( :draft => true, :user_id => @another_user.id )
+      get :index, {}, valid_session
+      assigns(:comments).should eq([])
+    end
+
+    it "should assign draft comments of current user" do
+      comment = Comment.create! valid_attributes.merge( :draft => true )
       get :index, {}, valid_session
       assigns(:comments).should eq([comment])
     end
