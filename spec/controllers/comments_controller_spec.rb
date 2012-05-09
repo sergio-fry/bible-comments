@@ -58,6 +58,11 @@ describe CommentsController do
       get :index, {}, valid_session
       assigns(:comments).should eq([comment])
     end
+
+    it "should be ok for guests" do
+      CommentsController.any_instance.stub(:current_user) { nil }
+      get :index, {}, valid_session
+    end
   end
 
   describe "GET show" do

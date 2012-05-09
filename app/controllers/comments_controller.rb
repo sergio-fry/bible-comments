@@ -10,6 +10,10 @@ class CommentsController < InheritedResources::Base
   private
 
   def load_comments
-    @comments ||= Comment.where("(draft = ?) OR (draft = ? AND user_id = ?)", false, true, current_user.id)
+    if current_user.present?
+      @comments ||= Comment.where("(draft = ?) OR (draft = ? AND user_id = ?)", false, true, current_user.id)
+    else # for guests
+      @comments ||= Comment.where("draft = ?", false)
+    end
   end
 end

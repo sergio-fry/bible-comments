@@ -8,7 +8,7 @@
 
 <% @comments.each do |comment| %>
   <tr>
-    <td><%= link_to comment.title, comment %></td>
+    <td><%= link_to comment.title + ( comment.draft? ? " (Draft)" : ""), comment %></td>
     <td><%= comment.bible_links %></td>
   </tr>
 <% end %>
